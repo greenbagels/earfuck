@@ -1,13 +1,13 @@
 #include <algorithm>
-#include "brainfuck.h"
+#include "memory.h"
 
-Brainfuck::Brainfuck()
+Memory::Memory()
 {
   memory.resize(30, '\0'); // bf demands that >=30k byte-size, null characters be available
   memory_index = 0; // starting location for the ptr
 }
 
-void Brainfuck::inc_vec()
+void Memory::inc_vec()
 {
   if((memory_index+1) == memory.size())
   {
@@ -16,7 +16,7 @@ void Brainfuck::inc_vec()
   ++memory_index;
 }
 
-void Brainfuck::dec_vec()
+void Memory::dec_vec()
 {
   if(memory_index == 0)
   {
@@ -28,17 +28,17 @@ void Brainfuck::dec_vec()
   --memory_index;
 }
 
-void Brainfuck::inc_val()
+void Memory::inc_val()
 {
   ++memory[memory_index];
 }
 
-void Brainfuck::dec_val()
+void Memory::dec_val()
 {
   --memory[memory_index];
 }
 
-unsigned char& Brainfuck::get_byte()
+unsigned char& Memory::get_byte()
 {
   return memory[memory_index];
 }

@@ -1,13 +1,13 @@
-#ifndef BRAINFUCK_H
-#define BRAINFUCK_H
+#ifndef MEMORY_H
+#define MEMORY_H
 
 #include <deque>
 #include <vector>
 
-class Brainfuck
+class Memory
 {
   public:
-    Brainfuck();
+    Memory();
     void inc_vec();  // equivalent to >
     void dec_vec();  // equivalent to <
     void inc_val();  // equivalent to +
@@ -20,4 +20,4 @@ class Brainfuck
     std::vector<unsigned char>::size_type memory_index; // pointer to our current byte
 };
 
-#endif
+#endif //MEMORY_H
