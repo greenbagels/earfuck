@@ -12,10 +12,11 @@ class SoundEngine
 {
   public:
     SoundEngine();
-    void append_command(const double frequency, const unsigned int duration);
+    void append_command(const signed char twelfth_root, const unsigned int duration);
     int beep(); 
   private:
     const unsigned int deci_to_milli = 100u;
+    const double a4_freq = 440.00;
     std::string beep_command;
 };
 

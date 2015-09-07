@@ -11,19 +11,8 @@ Program::Program(std::string &raw_instructions, std::string &raw_stdin)
    instructions = std::deque<unsigned char>(raw_instructions.begin(), raw_instructions.end());
    stdin_deque = std::deque<unsigned char>(raw_stdin.begin(), raw_stdin.end());
    parse_instructions();
+   snd_engine.beep();
 }
-
-/*
-template <typename T>
-int Program::input_container(T& dest_container, const char* msg) //TODO: change to accept file input as well
-{
-  std::string temp;
-  std::cout << msg << '\n';
-  std::getline(std::cin, temp);
-  dest_container = T(temp.begin(), temp.end());
-  return 0;
-}
-*/
 
 int Program::parse_instructions()
 {
@@ -50,7 +39,21 @@ int Program::parse_instructions()
         stdin_deque.pop_front(); //We're tearing straight through the stdin, kind of like https://xkcd.com/205/
         break;
       case '.':
-        std::cout << bf_memory.get_byte();
+        //std::cout << bf_memory.get_byte(); //standard brainfuck behaviour
+        if(!(bf_memory.current_index() % 2)) //meaning it's the first in the pair, or the frequency
+        {
+          int next_index = bf_memory.current_index() + 1;
+          snd_engine.append_command(bf_memory.get_byte(), bf_memory.get_byte(next_index));
+        }
+        else if(bf_memory.current_index() % 2) // meaning it must be the second, or the duration
+        {
+          int prev_index = bf_memory.current_index() - 1;
+          snd_engine.append_command(bf_memory.get_byte(prev_index), bf_memory.get_byte());
+        }
+        else // this should never occur, ever.
+        {
+          throw std::runtime_error("Someone broke the laws of logic. This should not have been thrown!");
+        }
         break;
       case '[':
         //TODO: change the bracket handling to a more elegant way without the need for post-logic inc/dec
@@ -84,7 +87,7 @@ int Program::parse_instructions()
       case ']':
         if(bf_memory.get_byte())
         {
-          std::vector<unsigned int> bracket_lifo;
+          std::vector<unsigned char> bracket_lifo;
           do {
             switch(*i)
             {

@@ -7,6 +7,7 @@
 //system headers
 //local headers
 #include "memory.h"
+#include "sound.h"
 
 class Program
 {
@@ -17,6 +18,7 @@ class Program
     std::deque<unsigned char> instructions;
     std::deque<unsigned char> stdin_deque;
     Memory bf_memory;
+    SoundEngine snd_engine;
 };
 
 #endif // PROGRAM_H
