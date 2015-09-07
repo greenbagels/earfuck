@@ -1,8 +1,13 @@
 # earfuck
 A brainfuck interpreter that outputs sound.
 
-# usage
-Using the interpreter is easy. Just build the application with a C++ compiler (C++11 support **required**, C++14 **recommended**): 
+# Requirements
+
+- C++ compiler &mdash; C++11 support is **required**, and C++14 support is **recommended**.
+- The `beep` [program created by Johnathan Nightingale.](http://www.johnath.com/beep/) &mdash; WINAPI Beep() support to be added.
+
+# Usage
+Using the interpreter is easy. Just build the application with your favorite C++ compiler that fits the above criteria.
 
     $ c++ --std=c++14 -Wall -Wextra -Werror core.cpp memory.cpp program.cpp -o bfinterpreter
 
@@ -25,7 +30,7 @@ Options can be added in any order, but the order of `instructions` and `stdin` i
 
 1. ...get the base interpreter working ✓
 2. Add support for reading programs from files ✓
-3. Adjust base interpreter to output to POSIX/WINAPI Beep() function
+3. Adjust base interpreter to output to POSIX/WINAPI-compliant beep() function ✓
 4. Utilize MIDI library or other sound engine to output sounds (perhaps even different timbres?)
 
 # License
