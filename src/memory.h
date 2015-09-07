@@ -13,6 +13,8 @@ class Memory
     void inc_val();  // equivalent to +
     void dec_val();  // equivalent to -
     unsigned char& get_byte(); // used for , or .
+    unsigned char& get_byte(unsigned int);
+    std::vector<unsigned char>::size_type current_index();
 
   private:
     const std::size_t growth = 500u; // our standard growth size for if we overflow

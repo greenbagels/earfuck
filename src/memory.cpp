@@ -42,3 +42,13 @@ unsigned char& Memory::get_byte()
 {
   return memory[memory_index];
 }
+
+unsigned char& Memory::get_byte(unsigned int index)
+{
+  return memory[index];
+}
+
+std::vector<unsigned char>::size_type Memory::current_index()
+{
+  return memory_index;
+}
