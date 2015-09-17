@@ -2,7 +2,7 @@
 #include <algorithm>
 //system headers
 //local headers
-#include "memory.h"
+#include "memory.hpp"
 
 Memory::Memory()
 {

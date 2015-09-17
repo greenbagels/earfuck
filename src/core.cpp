@@ -5,7 +5,7 @@
 //system headers
 #include <getopt.h> /* needed for getopt_long - GNU EXTENSION, NOT POSIX! */
 //local headers
-#include "program.h"
+#include "program.hpp"
 
 std::string slurp_file(std::string file_name)
 {
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
     }
     if(argv[optind] == nullptr)
     {
-      throw(std::invalid_argument("Usage: ./bfinterpreter [options] instructions [stdin]\n"));
+      throw(std::invalid_argument("Usage: ./earfuck [options] instructions [stdin]\n"));
     }
   }
   catch(std::invalid_argument except)

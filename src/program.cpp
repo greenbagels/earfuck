@@ -4,7 +4,7 @@
 #include <string>
 //system headers
 //local headers
-#include "program.h"
+#include "program.hpp"
 
 Program::Program(std::string &raw_instructions, std::string &raw_stdin)
 {

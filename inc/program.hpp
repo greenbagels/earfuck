@@ -6,8 +6,8 @@
 #include <string>
 //system headers
 //local headers
-#include "memory.h"
-#include "sound.h"
+#include "memory.hpp"
+#include "sound.hpp"
 
 class Program
 {
